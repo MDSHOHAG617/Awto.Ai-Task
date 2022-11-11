@@ -46,10 +46,10 @@ const Register = () => {
     );
   }
     return (
-        <div className="bg-s w-8/12 mt- bg-accent rounded  mx-auto">
+        <div className=" w-8/12 bg-gradient-to-r from-pink-300 to-blue-300 rounded  mx-auto mt-8">
             <h1 className='text-2xl font-bold py-4 pt-8'>Please Register</h1>
       <form onSubmit={() => createUserWithEmailAndPassword(email, password)}>
-      <input className="input input-bordered input-info     w-full max-w-xs my-3"
+      <input className="input input-bordered input-info     lg:w-full sm:w-10/12 max-w-xs my-3 "
       required
       name='Email'
       placeholder='Type your email'
@@ -58,20 +58,20 @@ const Register = () => {
         onChange={(e) => setEmail(e.target.value)}
       /><br></br>
       <input
-      className='input input-bordered input-info w-full max-w-xs my-3 '
+      className='input input-bordered input-info lg:w-full sm:w-10/12 max-w-xs my-3 '
       type="text" 
       name='mobile'
       required
       placeholder='type your mobile'/>
       <br></br>
       <textarea
-      className='textarea textarea-accent w-full max-w-xs my-3'
+      className='textarea textarea-accent lg:w-full sm:w-10/12 max-w-xs my-3'
       required
       type="text" 
       name='contact'
       placeholder='type your contact'/>
         <br></br>
-      <input className="input input-bordered input-info w-full max-w-xs mb-3"
+      <input className="input input-bordered input-info lg:w-full sm:w-10/12 max-w-xs mb-3"
       placeholder='Enter password'
       required
         type="password"

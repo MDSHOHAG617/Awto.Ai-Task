@@ -27,7 +27,7 @@ const Navbar = () => {
         }</li>
         </ul>
         </div>
-         <a className="w-4/12"><img src="https://awto.ai/images/logo.png"/></a>
+         <a className="w-4/12 lg:w-48"><img src="https://awto.ai/images/logo.png"/></a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal p-0">
