@@ -1,0 +1,93 @@
+import { getAuth } from 'firebase/auth';
+import React, { useState } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import app from '../firebase.init';
+import Loading from './Loading';
+
+const Login = () => {
+    const auth=getAuth(app);
+    const [email, setEmail] = useState('');
+     const [password, setPassword] = useState('');
+    const [
+        signInWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useSignInWithEmailAndPassword(auth);
+
+  if (error) {
+    return (
+    //   <div>
+    //     <p className='text-red-400'>Error: {error.message}</p>
+    //   </div>
+    <div className="alert alert-error shadow-lg w-10/12 mx-auto mt-8">
+  <div>
+    <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    <p className=''>Error: {error.message}</p>
+  </div>
+</div>
+    );
+  }
+  if (loading) {
+    return <Loading></Loading>
+    // return <p>Loading...</p>;
+  }
+  if (user) {
+    return (
+    
+  <div className="alert alert-success shadow-lg w-10/ 12       mx-auto mt-8 ">
+      <div>
+    <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+    <h1 className=''>User successfully Logedin</h1>
+   
+     </div>
+  </div>
+      
+    );
+  }
+    return (
+        <div>
+            <div className="bg-s w-8/12 mt- bg-accent rounded  mx-auto">
+            <h1 className='text-2xl font-bold py-4 pt-8'>Please Login</h1>
+      <form onSubmit={() => signInWithEmailAndPassword(email, password)}>
+      <input className="input input-bordered input-info     w-full max-w-xs my-3"
+      required
+      name='Email'
+      placeholder='Type your email'
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      /><br></br>
+      <input
+      className='input input-bordered input-info w-full max-w-xs my-3 '
+      type="text" 
+      name='mobile'
+      required
+      placeholder='type your mobile'/>
+      <br></br>
+      <textarea
+      className='textarea textarea-accent w-full max-w-xs my-3'
+      required
+      type="text" 
+      name='contact'
+      placeholder='type your contact'/>
+        <br></br>
+      <input className="input input-bordered input-info w-full max-w-xs mb-3"
+      placeholder='Enter password'
+      required
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <br></br>
+      <button className='btn glass btn-md btn-primary my-3 text-black'
+      type='submit' >
+        Login
+      </button>
+      </form>
+    </div>
+        </div>
+    );
+};
+
+export default Login;
